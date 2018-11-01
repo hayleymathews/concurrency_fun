@@ -31,6 +31,7 @@ defmodule Cache do
     send(:cache, {:get, self(), ref, url})
     receive do
       {:ok, ^ref, page} -> page
+      after 1000 -> nil
     end
   end
 
